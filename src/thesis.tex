@@ -1,0 +1,94 @@
+% Packages
+\documentclass[twoside, 12pt]{report}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[sfdefault]{roboto}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{index}
+\usepackage[font=small,labelfont=bf]{caption}
+\renewcommand{\baselinestretch}{1.2} 
+\graphicspath{ {./images/} }
+\makeindex
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{titlesec}
+
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+\geometry{centering}
+
+\usepackage{subfiles}
+\usepackage{./settings}
+
+% \renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+
+
+% Header and footer
+\fancyhf{}
+\pagestyle{fancy}
+
+% Use chapter on odd pages
+% \fancyhead[CO]{\textsl{\rightmark}}
+
+% Use section on even pages
+% \fancyhead[CE]{\textsl{\leftmark}}
+
+% Page number even page left / odd page right
+\fancyfoot[EL]{\thepage}
+\fancyfoot[OR]{\thepage}
+
+% Author left
+% \fancyfoot[ER, OR]{\paperAuthor}
+
+% Topic center
+\fancyfoot[EC, OC]{\paperTopic}
+
+% Formatting the chapter titles
+\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{18pt}{\huge}
+
+% Begin of written text
+\begin{document}
+\subfile{chapters/title}
+\newpage\null\newpage
+\subfile{chapters/confidential}
+\subfile{chapters/statutory}
+
+% Abstract goes unnumbered
+\begin{abstract}
+\subfile{chapters/abstract}
+\end{abstract}
+
+% Page counting starts after title
+\setcounter{page}{6}
+\tableofcontents
+
+% Each Chapter is divided into sections and sub files
+\chapter{Introduction}
+\subfile{chapters/introduction}
+
+% TODO: Add your additional chapters here
+%       You might also want to delete the chapter one to an appropriate name
+%       You have to rename the file for that as well
+
+\chapter{Chapter One}
+\subfile{chapters/chapter_one}
+
+\chapter{Conclusion and Outlook}
+\subfile{chapters/conclusion_and_outlook}
+
+
+% Bibliography
+\printbibliography[heading=bibintoc,title={References}]
+
+\end{document}
+  
